@@ -1,0 +1,18 @@
+Sanity test:
+avrdude -c usbasp-clone -p m328p
+
+to create hex file:
+
+->avr-gcc -g -Os -mmcu=atmega328p -c flash.c        produces an .o file
+->avr-gcc -g -mmcu=atmega328p -o flash.elf flash.o     produces an .elf file
+->avr-objcopy -j .text -j .data -O ihex flash.elf flash.hex
+
+
+
+to write hex file 
+avrdude -U flash:w:flash.hex
+
+to send folder to pi:
+scp -r pi@10.42.0.245:/destination/path /source/path
+
+
