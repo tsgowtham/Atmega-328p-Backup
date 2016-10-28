@@ -1,5 +1,18 @@
-Sanity test:
-avrdude -c usbasp-clone -p m328p
+These commands only work on Atmega microcontrollers.
+Few of the below commands are microcontroller specific.
+
+Check if avrdude is installed by running the below command on cmd or teminal:
+->avrdude
+If it shows an error install avrdude for Ubuntu using 
+->apt-get install avrdude avr-gcc avr-libc 
+For Windows, check the below link
+http://www.ladyada.net/learn/avr/setup-win.html
+
+To check the name of your programmer:
+->avrdude -c -p m328p
+
+Sanity test(replace usbasp-clone with the name of your programmer):
+->avrdude -c usbasp-clone -p m328p
 
 to create hex file:
 
@@ -7,12 +20,8 @@ to create hex file:
 ->avr-gcc -g -mmcu=atmega328p -o flash.elf flash.o     produces an .elf file
 ->avr-objcopy -j .text -j .data -O ihex flash.elf flash.hex
 
+To write hex file: 
+->avrdude -U flash:w:flash.hex
 
-
-to write hex file 
-avrdude -U flash:w:flash.hex
-
-to send folder to pi:
-scp -r pi@10.42.0.245:/destination/path /source/path
 
 
